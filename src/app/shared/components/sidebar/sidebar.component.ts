@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GifsService } from 'src/app/gifs/services/gifs.service';
 
 @Component({
   selector: 'shared-sidebar',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  // private GifsService - Injectando.
+  constructor (private gifsService : GifsService) {
 
+  }
+
+  get tags() : string[] {
+    return this.gifsService.tagHistory;
+  }
+
+  searchTag( tag : string) {
+    this.gifsService.searchTag(tag);
+  }
 }
